@@ -1,0 +1,46 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\begin{document}
+\pgfmathdeclarefunction{myfunct}{1}{\pgfmathparse{#1^2}}
+\pgfmathdeclarefunction{diff}{1}{\pgfmathparse{#1-0.25}}
+    \begin{tikzpicture}[
+            >=stealth, %% arrow tips
+        ]
+        \begin{axis}[
+                blue,
+                axis x line=middle,
+                axis y line=center,
+                every axis x label/.style={at={(current axis.right of origin)},anchor=north},
+                every axis y label/.style={at={(current axis.above origin)},anchor=east},
+                xmin=-0.5,xmax=1.5,
+                ymin=-0.5,ymax=3,
+                xtick=\empty,
+                ytick=\empty,
+                xlabel={$x$},
+                ylabel={$y$},
+            ]
+
+            %% draw the plot:
+            \addplot [black,samples=100] {myfunct(x)};
+            \addplot [red,samples=100] {diff(x)};
+
+            %% define some coordinates that we need later:
+            \def\xb{0.5}
+            \pgfmathsetmacro{\yb}{myfunct(\xb)}
+            \path (axis cs:\xb, \yb) coordinate (0);
+
+            \path (axis cs:0, 0) coordinate (origin);
+        \end{axis}
+
+        %% draw the black lines:
+        \tikzset{marker/.style={shorten <=-3pt,shorten >=-3pt}} %% expand the lines
+        \draw [marker] (origin-|0) -- (0);
+        \draw [marker] (origin|-0) -- (0);
+
+        \path (origin) ++(10pt,10pt) coordinate (offset);
+
+        \node at (origin-|0) [below,yshift=-3pt,red!50!blue] {$x$};
+        \node at (0-|origin) [left,xshift=-3pt,black!50!blue] {$y$};
+    \end{tikzpicture}
+\end{document}

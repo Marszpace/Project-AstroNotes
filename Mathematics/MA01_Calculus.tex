@@ -1,0 +1,103 @@
+\documentclass[12pt, a4paper, oneside]{article}
+\usepackage{./astronotes}
+
+\begin{document}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\textbf{กิตติพัศ พงศ์อรุโณทัย}\\{\today}}
+\rhead{\textbf{MA01}\\แคลคูลัส}
+\cfoot{\thepage}
+
+\begin{titlepage}
+	\centering
+    
+	%\includegraphics[width=0.15\textwidth]{img/sklogo.png}
+    %\includegraphics[width=0.15\textwidth]{img/kvislogo.png}
+    %\includegraphics[width=0.15\textwidth]{img/mwitlogo.png}
+    %\includegraphics[width=0.15\textwidth]{img/mzpfp1.jpg}
+    \includegraphics[width=0.15\textwidth]{img/mzpfp2.jpg}
+    \par\vspace{1cm}
+	{\Large \textsc{Astronomy POSN Summaries (AstroNotes)}\par}
+    \vspace{0.25cm}
+	{\Large \textsc{ไฟล์สรุปสำหรับ สอวน. ดาราศาสตร์}\par}
+
+	\vspace{2cm}
+	{\LARGE\bfseries Calculus\par}
+    \vspace{0.25cm}
+    {\LARGE\bfseries แคลคูลัส\par}
+
+	\vspace{1cm}
+	{\Large\itshape กิตติพัศ พงศ์อรุโณทัย\par}
+    \vspace{0.25cm}
+    {\large\itshape โรงเรียนกำเนิดวิทย์\par}
+    {\itshape ศูนย์ สอวน. ดาราศาสตร์ โรงเรียนมหิดลวิทยานุสรณ์ และโรงเรียนสวนกุหลาบวิทยาลัย}
+	\vfill
+% Bottom of the page
+	{\large \today\par}
+\end{titlepage}
+
+\section{แคลคูลัสคืออะไร?}
+แคลคูลัส (Calculus) คือศาสตร์ที่ศึกษาการเปลี่ยนแปลงเล็กๆ (Infinitesimal Change) ของฟังค์ชั่นหรือตัวแปรต่างๆ เทียบกับตัวแปรอีกตัวหนึ่ง  ซึ่งแคลคูลัสถูกใช้ในฟิสิกส์และดาราศาสตร์ในปริมาณมาก ดังนั้นนักเรียนที่จะเข้าค่ายสอวน. ดาราศาสตร์ควรรู้แคลคูลัสเบื้องต้น เพื่อนำไปประยุกต์ใช้ในสิ่งที่ต้องเรียนต่อไป
+
+\section{ทฤษฎีพื้นฐานแห่งแคลคูลัส (Fundamental Theorem of Calculus)}
+สมมุติว่าเรามีตัวแปรสองตัวแปร คือ ความเร็ว $v$ และระยะทาง $s$ ซึ่งขึ้นกับเวลา $t$ \\
+คำถามคือ $v$ และ $s$ สัมพันธ์กันอย่างไร หรืออีกนัยหนึ่งคือ ทำอย่างไรเพื่อให้ได้ $v$ จาก $s$ หรือ $s$ จาก $v$ \\
+สมมุติเราอยากรู้ ความเร็ว ณ เวลา t ใดๆ $v(t)$ โดยที่เรารู้ระยะทาง ณ เวลาใดๆ $s(t)$ เราสามารถทำได้ โดยการหาความเร็วจากสูตร
+\[v = \frac{\Delta s}{\Delta t}\]
+อย่างไรก็ตาม สูตรนี้ใช้ได้ก็ต่อเมื่อ $\Delta t$ มีปริมาณที่แน่นอน หากเราอยากให้ปริมาณนี้เล็กมากๆ จนเวลาเริ่มและจบใกล้กัน เราต้องใช้เรื่องของลิมิต ซึ่งจะพูดในส่วนต่อไป \\
+ดังนั้น เราจะได้ว่า
+\begin{align}
+    v &= \frac{\Delta s}{\Delta t} \\
+      &= \frac{s_2-s_1}{\Delta t} \\
+      &= \frac{s(t_2)-s(t_1)}{\Delta t} \\
+      &= \frac{s(t_1+\Delta t)-s(t_1)}{\Delta t}
+\end{align}
+หากเราใช้การทำให้ $\Delta t$ เล็กมากๆ เราจะได้ว่า
+\[v(t) = \lim_{h\to0}\frac{s(t+h)-s(t)}{h}\]
+
+ซึ่งเราจะเรียกการหาอัตราการเปลี่ยนแปลงนี้เรียกว่าการหาอนุพันธ์ (Finding Derivative/Differential Operator) ซึ่งก็จะพูดต่อไปเช่นกัน
+\[v(t) = \frac{\dd s}{\dd t}\]
+แล้วถ้าเราต้องการหา $s$ ระหว่างสองจุดเวลาใดๆ แล้วเรารู้ $v$ เราจะสามารถใช้จุดเวลาจำนวนมาก ในช่วงดังกล่าว คูณกับ $v$ แล้วนำมาบวกกัน จะได้ว่า
+\[s(t)=\sum_{i=1}^{n} v(t+i \Delta t)\cdot \Delta t\]
+ซึ่งเราจะเรียกการบวกต่อเนื่องว่าการหาปริพันธ์ (Finding Integral/Integration Operator) ซึ่งก็จะพูดต่อไปในส่วนสุดท้าย
+\[s(t)=\int_{t_1}^{t_2} v(t)\dd t\]
+แต่เมื่อเรานำค่าของ $s(t)$ ที่ได้มาแทนในสมการดิฟ เราจะพบว่า 
+\begin{align*}
+    v &= \frac{\dd s}{\dd t}\\
+      &= \frac{\dd}{\dd t}(\int_{t_1}^{t_2} v\dd t)
+\end{align*}
+หมายความว่า การดิฟและอินทีเกรต คือสิ่งที่ตรงข้ามกัน สิ่งนี้คือทฤษฎีพื้นฐานแห่งแคลคูลัส หรือ (Fundamental Theorem of Calculus) แม้ว่าสิ่งนี้จะไม่ค่อยได้ใช้ในการแก้โจทย์ แต่ก็เป็นสิ่งที่สำคัญในการเพิ่มความเข้าใจในวิชาแคลคูลัสให้มากขึ้น
+
+\section{ลิมิต (Limit)}
+\begin{figure}[!htb]
+    \centering
+    \includestandalone[width=0.5\textwidth]{diagram/epsilondelta}
+    \caption{กราฟของลิมิต}
+    \label{fig:tikz:epsilondelta}
+\end{figure}
+
+ภาพ \ref{fig:tikz:epsilondelta} แสดงถึงลิมิตในกราฟของฟังค์ชั่นหนึ่งๆ ซึ่งความหมายที่แท้จริงของลิมิต คือการเลือก $\delta$ ที่น้อยมากๆ แต่ไม่เท่ากับศูนย์ แล้วพิสูจน์ว่าค่าของฟังค์ชั่น อยู่ภายใน $\epsilon$ \\
+อย่างไรก็ตาม การพิสูจน์ลิมิต เกินของเขตของแคลคูลัส (เป็นของ Real Analysis) ดังนั้นเราจะพูดถึงแค่การหาลิมิตเท่านั้น \\
+ในการหาลิมิตอย่างง่าย ทำได้ดังนี้
+\begin{enumerate}
+    \item การแทนค่าเข้าไปในลิมิต เช่น $\lim_{x\to2} x+2 = 2+2 = 4$
+    \item การตัดเศษส่วน เช่น $\lim_{x\to1}\frac{x^2-1}{x-1} = x+1 = 2$ (เพราะว่าลิมิตคือการที่เราเข้าใกล้ ค่าจริงๆ จะไม่เกิดการหารด้วยศูนย์)
+    \item การใช้กฎของโลปิตาล (L'Hopital's Rule) คือการจัดรูปเป็นเศษส่วน แล้วดิฟทั้งตัวตั้งและตัวหาร เช่น $\lim_{x\to0}\frac{2\sin(x)-\sin(2x)}{x-sin(x)} = \lim_{x\to0}\frac{2\cos(x)-2\cos(2x)}{1-cos(x)} = \lim_{x\to0}\frac{-2\sin(x)+4\sin(2x)}{sin(x)} = \lim_{x\to0}\frac{-2\cos(x)+8\cos(2x)}{cos(x)} = \frac{-2+8}{1} = 6$
+\end{enumerate}
+และสิ่งสำคัญที่ควรรู้คือ
+\begin{enumerate}
+    \item $\lim_{x\to\pm\infty} \frac{1}{x} = 0$
+    \item $\lim_{x\to0^+} \frac{1}{x} = \infty$
+    \item $\lim_{x\to0^-} \frac{1}{x} = -\infty$
+\end{enumerate}
+
+\section{อนุพันธ์ (Derivative)}
+\begin{figure}[!htb]
+    \centering
+    \includestandalone[width=0.5\textwidth]{diagram/derivative}
+    \caption{กราฟของอนุพันธ์}
+    \label{fig:tikz:derivative}
+\end{figure}
+
+\end{document}

@@ -1,0 +1,82 @@
+\ProvidesPackage{astronotes}
+
+\usepackage{indentfirst}
+
+% Languages
+\usepackage{polyglossia}
+\setmainlanguage{thai}
+\setotherlanguage{english}
+\usepackage{concmath}
+\newfontfamily\thaifont[
+    Script = Thai,
+    Path = fonts/,
+    UprightFont = *.ttf,
+    BoldFont = * Bold.ttf,
+    AutoFakeSlant = 0.2
+]{THSarabun}
+\XeTeXlinebreaklocale “th”
+\XeTeXlinebreakskip = 0pt plus 1pt
+
+% Titlesection Formatting
+\usepackage{fancyhdr}
+\usepackage[
+    type={CC},
+    modifier={by-nc},
+    version={4.0},
+]{doclicense}
+
+% Mathematical Tools
+\usepackage{cancel, amssymb, gensymb, xfrac}
+\usepackage{physics}
+\usepackage{mathtools}
+\allowdisplaybreaks
+
+\usepackage{siunitx}
+\AtBeginDocument{\RenewCommandCopy\qty\SI}
+
+% Packages
+\usepackage{graphicx}
+\graphicspath{{diagram/}}
+
+\usepackage{subcaption, wrapfig, float}
+\usepackage{tcolorbox, framed}
+\usepackage{multirow, multicol}
+\usepackage{enumitem}
+\usepackage{pdfpages}
+
+% TikZ
+\usepackage{tikz}
+%\usetikzlibrary{external}
+%\tikzexternalize[prefix=tikz/]
+\usepackage{pgfplots}
+\usepackage{standalone}
+\usetikzlibrary{angles, quotes}
+
+% Cross Referencing
+\usepackage{xcolor}
+\definecolor{awkblue}{RGB}{40, 49, 226}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks = true,
+    linkcolor = awkblue
+}
+
+% Stylings
+\captionsetup{
+    labelfont = {large, rm, bf},
+    textfont = {small, rm},
+    justification = centering,
+    width = 0.7\textwidth
+}
+
+\addto\captionsthai{\renewcommand{\figurename}{ภาพที่}}
+\addto\captionsthai{\renewcommand{\chaptername}{ตอนที่}}
+\addto\captionsthai{\renewcommand{\tablename}{ตารางที่}}
+\addto\captionsthai{\renewcommand{\bibname}{บรรณานุกรม}}
+\addto\captionsthai{\renewcommand{\listfigurename}{สารบัญรูปภาพ}}
+\addto\captionsthai{\renewcommand{\listtablename}{สารบัญตาราง}}
+
+% Commands
+\usepackage[c]{esvect}
+\newcommand{\vt}[1]{\vv{#1}}
+\newcommand{\appr}{\rightarrow}
